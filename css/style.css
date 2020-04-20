@@ -1,0 +1,12 @@
+
+     body, html
+       {
+           font-family: Lato;
+            height: 100%;
+           
+       }
+       #footer {
+            flex-shrink: none;
+             background-color: purple;
+
+        }
