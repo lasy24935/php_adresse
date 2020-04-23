@@ -1,24 +1,23 @@
 <?php
-// include database connection file
+
 require_once'config.php';
 
-// Code for record deletion
 if(isset($_REQUEST['del']))
 {
-//Get row id
-$uid=intval($_GET['del']);
-//Qyery for deletion
-$sql = "delete from tblusers WHERE  id=:id";
-// Prepare query for execution
-$query = $dbh->prepare($sql);
-// bind the parameters
-$query-> bindParam(':id',$uid, PDO::PARAM_STR);
-// Query Execution
-$query -> execute();
-// Mesage after updation
-echo "<script>alert('Record Updated successfully');</script>";
-// Code for redirection
-echo "<script>window.location.href='index.php'</script>"; 
+
+  $uid=intval($_GET['del']);
+
+  $sql = "delete from blogs WHERE  id=:id";
+
+  $query = $dbh->prepare($sql);
+
+  $query-> bindParam(':id',$uid, PDO::PARAM_STR);
+
+  $query -> execute();
+
+  echo "<script>alert('Record Updated successfully');</script>";
+
+  echo "<script>window.location.href='index.php'</script>"; 
 }
 
 ?>
@@ -50,7 +49,7 @@ echo "<script>window.location.href='index.php'</script>";
 <tbody>
     
 <?php 
-$sql = "SELECT prenom,nom,email,contact,adresse,posting,id from blogs";
+$sql = "SELECT * from blogs";
 //Prepare the query:
 $query = $dbh->prepare($sql);
 //Execute the query:
