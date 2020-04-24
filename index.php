@@ -1,26 +1,26 @@
-<?php
+        <?php
 
-require_once'config.php';
+        require_once('config.php');
 
-if(isset($_REQUEST['del']))
-{
+        if(isset($_REQUEST['del']))
+        {
 
-  $uid=intval($_GET['del']);
+          $uid=intval($_GET['del']);
 
-  $sql = "delete from blogs WHERE  id=:id";
+          $sql = "delete from contact WHERE  id=:id";
 
-  $query = $dbh->prepare($sql);
+          $query = $connect->prepare($sql);
 
-  $query-> bindParam(':id',$uid, PDO::PARAM_STR);
+          $query-> bindParam(':id',$uid, PDO::PARAM_STR);
 
-  $query -> execute();
+          $query -> execute();
 
-  echo "<script>alert('Record Updated successfully');</script>";
+          echo "<script>alert('Membre supprimer avec success ');</script>";
 
-  echo "<script>window.location.href='index.php'</script>"; 
-}
+          echo "<script>window.location.href='index.php'</script>"; 
+        }
 
-?>
+        ?>
 
 <?php
            include_once 'header.php';
@@ -28,11 +28,14 @@ if(isset($_REQUEST['del']))
 ?>
 
 
+
 <div class="container">
 <div class="row">
 <div class="col-md-12">
 <h3>Listes des Membres </h3> <hr />
-<a href="insert.php"><button class="btn btn-primary"> Ajouter </button></a>
+<a href="insert.php" class="btn btn-large btn-success">
+        <i class="glyphicon glyphicon-plus"></i> &nbsp; Ajouter un utilisateur
+    </a>
 <div class="table-responsive">                
 <table id="mytable" class="table table-bordred table-striped">                 
 <thead>
@@ -49,9 +52,9 @@ if(isset($_REQUEST['del']))
 <tbody>
     
 <?php 
-$sql = "SELECT * from blogs";
+$sql = "SELECT * from contact";
 //Prepare the query:
-$query = $dbh->prepare($sql);
+$query = $connect->prepare($sql);
 //Execute the query:
 $query->execute();
 //Assign the data which you pulled from the database (in the preceding step) to a variable.

@@ -7,7 +7,7 @@ define('DB_NAME','adresse');
 
 try
 {
-$dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS);
+$connect = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS);
 }
 catch (PDOException $e)
 {

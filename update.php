@@ -13,9 +13,9 @@ $contact=$_POST['contact'];
 $adresse=$_POST['adresse'];
 
 // Query for Query for Updation
-$sql="UPDATE blogs SET prenom=:fn,nom=:ln,email=:eml,contact=:cno,adresse=:adrss WHERE id=:uid";
+$sql="UPDATE contact SET prenom=:fn,nom=:ln,email=:eml,contact=:cno,adresse=:adrss WHERE id=:uid";
 //Prepare Query for Execution
-$query = $dbh->prepare($sql);
+$query = $connect->prepare($sql);
 // Bind the parameters
 $query->bindParam(':fn',$fname,PDO::PARAM_STR);
 $query->bindParam(':ln',$lname,PDO::PARAM_STR);
@@ -26,9 +26,9 @@ $query->bindParam(':uid',$userid,PDO::PARAM_STR);
 // Query Execution
 $query->execute();
 // Mesage after updation
-echo "<script>alert('Record Updated successfully');</script>";
+echo "<script>alert('  Membre mise à jour avec success');</script>";
 // Code for redirection
-echo "<script>window.location.href='index.php'</script>"; 
+echo "<script>window.location.href='contact.php'</script>"; 
 }
 ?>
 
@@ -50,9 +50,9 @@ echo "<script>window.location.href='index.php'</script>";
 <?php 
 // Get the userid
 $userid=intval($_GET['id']);
-$sql = "SELECT prenom,nom,email,contact,adresse,posting,id from blogs where id=:uid";
+$sql = "SELECT prenom,nom,email,contact,adresse,posting,id from contact where id=:uid";
 //Prepare the query:
-$query = $dbh->prepare($sql);
+$query = $connect->prepare($sql);
 //Bind the parameters
 $query->bindParam(':uid',$userid,PDO::PARAM_STR);
 //Execute the query:

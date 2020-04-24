@@ -12,9 +12,9 @@ $contact=$_POST['contact'];
 $adresse=$_POST['adresse'];
 
 // Query for Insertion
-$sql="INSERT INTO blogs(prenom,nom,email,contact,adresse) VALUES(:fn,:ln,:eml,:cno,:adrss)";
+$sql="INSERT INTO contact(prenom,nom,email,contact,adresse) VALUES(:fn,:ln,:eml,:cno,:adrss)";
 //Prepare Query for Execution
-$query = $dbh->prepare($sql);
+$query = $connect->prepare($sql);
 // Bind the parameters
 $query->bindParam(':fn',$fname,PDO::PARAM_STR);
 $query->bindParam(':ln',$lname,PDO::PARAM_STR);
@@ -24,18 +24,18 @@ $query->bindParam(':adrss',$adresse,PDO::PARAM_STR);
 // Query Execution
 $query->execute();
 // Check that the insertion really worked. If the last inserted id is greater than zero, the insertion worked.
-$lastInsertId = $dbh->lastInsertId();
+$lastInsertId = $connect->lastInsertId();
 if($lastInsertId)
 {
 // Message for successfull insertion
-echo "<script>alert('Record inserted successfully');</script>";
-echo "<script>window.location.href='index.php'</script>"; 
+echo "<script>alert('Membre enregistrer avec succcess ');</script>";
+echo "<script>window.location.href='contact.php'</script>"; 
 }
 else 
 {
 // Message for unsuccessfull insertion
 echo "<script>alert('Something went wrong. Please try again');</script>";
-echo "<script>window.location.href='index.php'</script>"; 
+echo "<script>window.location.href='contact.php'</script>"; 
 }
 }
 ?>
@@ -56,8 +56,7 @@ echo "<script>window.location.href='index.php'</script>";
 </div>
 </div>
 
-
-<form name="insertrecord" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 <div class="row">
 <div class="col-md-4"><b>Prenom </b>
 <input type="text" name="prenom" class="form-control" required>
