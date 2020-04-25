@@ -1,39 +1,30 @@
 <?php
-// include database connection file
-require_once'config.php';
+require_once('config.php');
 if(isset($_POST['insert']))
 {
 
-// Posted Values  
 $fname=$_POST['prenom'];
 $lname=$_POST['nom'];
 $email=$_POST['email'];
 $contact=$_POST['contact'];
 $adresse=$_POST['adresse'];
 
-// Query for Insertion
 $sql="INSERT INTO contact(prenom,nom,email,contact,adresse) VALUES(:fn,:ln,:eml,:cno,:adrss)";
-//Prepare Query for Execution
 $query = $connect->prepare($sql);
-// Bind the parameters
 $query->bindParam(':fn',$fname,PDO::PARAM_STR);
 $query->bindParam(':ln',$lname,PDO::PARAM_STR);
 $query->bindParam(':eml',$email,PDO::PARAM_STR);
 $query->bindParam(':cno',$contact,PDO::PARAM_STR);
 $query->bindParam(':adrss',$adresse,PDO::PARAM_STR);
-// Query Execution
 $query->execute();
-// Check that the insertion really worked. If the last inserted id is greater than zero, the insertion worked.
 $lastInsertId = $connect->lastInsertId();
 if($lastInsertId)
 {
-// Message for successfull insertion
 echo "<script>alert('Membre enregistrer avec succcess ');</script>";
 echo "<script>window.location.href='contact.php'</script>"; 
 }
 else 
 {
-// Message for unsuccessfull insertion
 echo "<script>alert('Something went wrong. Please try again');</script>";
 echo "<script>window.location.href='contact.php'</script>"; 
 }
@@ -74,9 +65,6 @@ echo "<script>window.location.href='contact.php'</script>";
 <input type="text" name="contact" class="form-control" maxlength="10" required>
 </div>
 </div>  
-
-
-
 <div class="row">
 <div class="col-md-8"><b>Adresse</b>
 <textarea class="form-control" name="adresse" required></textarea>
@@ -87,24 +75,12 @@ echo "<script>window.location.href='contact.php'</script>";
 <div class="col-md-8">
 <input type="submit" name="insert" value="Submit">
 </div>
-</div> 
-     
-         
-
+</div>     
 </form>
               
 </div>
 </div>
-
-
 <?php
            include_once 'footer.php';
 
 ?>
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
-</html>

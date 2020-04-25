@@ -10,3 +10,21 @@
              background-color: purple;
 
         }
+
+        .auth
+        {
+             text-align: center;
+             box-shadow: 5px 5px 2px purple;
+        }
+
+        .login
+        {
+         box-shadow: 5px 5px 2px purple;
+
+        }
+
+        h5
+        {
+
+          font-weight: bold;
+        }

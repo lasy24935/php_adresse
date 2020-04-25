@@ -1,10 +1,39 @@
 <?php session_start(); ?>
 
+<?php
+require_once('config.php');
+if(isset($_POST['connecter']))
+{
+
+$fname=$_POST['username'];
+$login=$_POST['login'];
+$password=$_POST['password'];
+
+$sql="INSERT INTO users(username,login,password) VALUES(:fn,:ln,:eml)";
+$query = $connect->prepare($sql);
+$query->bindParam(':fn',$fname,PDO::PARAM_STR);
+$query->bindParam(':ln',$login,PDO::PARAM_STR);
+$query->bindParam(':eml',$password,PDO::PARAM_STR);
+$query->execute();
+$lastInsertId = $connect->lastInsertId();
+if($lastInsertId)
+{
+echo "<script>alert('Inscription terminer ');</script>";
+echo "<script>window.location.href='login.php'</script>"; 
+}
+else 
+{
+echo "<script>alert('Something went wrong. Please try again');</script>";
+echo "<script>window.location.href='login.php'</script>"; 
+}
+}
+?>
 
 <?php
            include_once 'header.php';
-?>
 
+?>
+        
 <!--Login-->          
                       <div class="card-body login" >
                                     
@@ -13,7 +42,7 @@
                                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                         <div class="card auth">
                                                           <div class="card-body">
-                                                            <h4 class="card-title ">AUTHENTIFICATION  </h4>
+                                                            <h4 class="card-title " style="font-weight: bold">INSCRIPTION  </h4>
                                                           </div>
                                                         </div>
                                             </div>
@@ -25,19 +54,24 @@
                                             
                                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                           
-                                              <form action="login.php" method="post">
+                                              <form action="register.php" method="post">
 
                                                     <div class="form-group">
+                                                      <label for="username">Prenom</label>
+                                                      <input type="text" class="form-control" id="username" placeholder="Votre prenom" name="username">
+                                                    </div>
+                                                   
+                                                       <div class="form-group">
                                                       <label for="login">Login</label>
-                                                      <input type="email" class="form-control" id="login" placeholder="Votre email" name="login" required>
+                                                      <input type="email" class="form-control" id="login" placeholder="Votre login" name="login">
                                                     </div>
                                                     <div class="form-group">
                                                       <label for="password">Password </label>
-                                                      <input type="password" class="form-control" id="password" placeholder="password" name="password" required>
+                                                      <input type="password" class="form-control" id="password" placeholder="password" name="password">
                                                     </div>
                                                     
-                                                    <button type="submit" class="btn btn-success btn-connecter" name="connecter" id="connecter">Connecter </button>
-                                                    <a href="register.php" class="btn btn-large btn-primary" style="float: right;"><i class="glyphicon glyphicon-backward"></i> &nbsp; Inscrire</a>
+                                                    
+                                                    <button type="submit" class="btn btn-success btn-connecter" name="connecter" id="connecter">S'inscrit </button>
                                               </form>
 
                                              </div>
@@ -45,10 +79,6 @@
                                     </div>
                     <!--/Login-->
                         </div>
-
-                                              
-            
-
 
 
 
@@ -58,10 +88,4 @@
 
 ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  

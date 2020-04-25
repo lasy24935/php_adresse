@@ -55,15 +55,11 @@
 $sql = "SELECT * from contact";
 //Prepare the query:
 $query = $connect->prepare($sql);
-//Execute the query:
 $query->execute();
-//Assign the data which you pulled from the database (in the preceding step) to a variable.
 $results=$query->fetchAll(PDO::FETCH_OBJ);
-// For serial number initialization
 $cnt=1;
 if($query->rowCount() > 0)
 {
-//In case that the query returned at least one record, we can echo the records within a foreach loop:
 foreach($results as $result)
 {               
 ?>  
@@ -83,7 +79,6 @@ foreach($results as $result)
     
 
 <?php 
-// for serial number increment
 $cnt++;
 }} ?>
 </tbody>      
