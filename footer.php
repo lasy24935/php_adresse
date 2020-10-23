@@ -1,8 +1,20 @@
 
+<div style="height: 30vh"></div>
 
-<div style="height: 45vh;"></div>
- <footer id="footer" class="py-4 text-white-50">
-            <div class="container text-center">
-                <small>Copyright &copy; ... </small>2020  AERROC
-            </div>
-</footer>
+<div class="panel panel-default">
+    <div class="panel-footer">
+    <small>Copyright &copy; ... </small>2020 AERROC
+    </div>
+</div>
+
+
+
+<script src="assets/js/jquery-3.4.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
+
