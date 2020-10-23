@@ -1,6 +1,6 @@
         <?php
 
-        require_once('config.php');
+        require_once 'config.php';
 
         if(isset($_REQUEST['del']))
         {
@@ -17,7 +17,7 @@
 
           echo "<script>alert('Membre supprimer avec success ');</script>";
 
-          echo "<script>window.location.href='index.php'</script>"; 
+          echo "<script>window.location.href='contact.php'</script>"; 
         }
 
         ?>
@@ -77,9 +77,9 @@ foreach($results as $result)
                             class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a>
                       </td>
 
-                      <td><a href="index.php?del=<?php echo htmlentities($result->id);?>"><button
+                      <td><a href="contact.php?del=<?php echo htmlentities($result->id);?>"><button
                             class="btn btn-danger btn-xs"
-                            onClick="return confirm('Do you really want to delete');"><span
+                            onClick="return confirm('Voulez-vous vraiment supprimer ce membre');"><span
                               class="glyphicon glyphicon-trash"></span></button></a></td>
                     </tr>
 

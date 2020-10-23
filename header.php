@@ -32,16 +32,14 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                 <li class="active"><a href="contact.php">Membre</a></li>
-                    <li class="active"><a href="insert.php">Saisir</a></li>
+                    <li><a href="insert.php">Saisir</a></li>
                   
                 </ul>
                
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="about.php">A Propos</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Connecter <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                      
                             <li><a href="login.php">Login</a></li>
                             <li><a href="register.php">Register</a></li>
                         </ul>

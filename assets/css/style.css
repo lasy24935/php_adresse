@@ -1,10 +1,17 @@
 
      body, html
        {
-           font-family: Lato;
+           font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             height: 100%;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
            
        }
+      
+        main {
+          flex: 1 0 auto;
+        }
        #footer {
             flex-shrink: none;
              background-color: purple;
